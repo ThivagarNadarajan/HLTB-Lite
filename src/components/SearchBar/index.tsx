@@ -25,7 +25,7 @@ const SearchBar = (): JSX.Element => {
 
 	return (
 		<div className="search-container">
-			<input type="text" onChange={(event) => handleSearchChange(event)} />
+			<input className="search-bar" type="text" onChange={(event) => handleSearchChange(event)} />
 			{
 				searchResults.length
 					? <div className="search-results">
