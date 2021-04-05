@@ -21,7 +21,7 @@ const App = (): JSX.Element => {
 	return (
 		<div className="container">
 			<h1>HLTB Lite</h1>
-			<SearchBar />
+			<SearchBar games={games} setGames={setGames} />
 			<div className="chart-container">
 				<BarChart
 					width={500}
@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
 				>
 					<XAxis
 						dataKey="tite"
-						angle={60}
+						angle={50}
 						textAnchor="start"
 						height={300}
 						width={300}
