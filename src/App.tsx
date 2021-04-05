@@ -36,7 +36,6 @@ const App = (): JSX.Element => {
 	return (
 		<div className="container">
 			<div>HLTB Lite</div>
-			<button onClick={() => console.log(games)}>Test</button>
 			<input type="text" onChange={(event) => handleSearchChange(event)} />
 			{games.map(game => <div key={game.id}>{game.name}</div>)}
 		</div>
