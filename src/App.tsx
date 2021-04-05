@@ -1,30 +1,44 @@
 import './App.css';
 
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useEffect, useState, ChangeEvent, useCallback } from 'react';
 import { Game, getDefaultGames, getSearchedGames } from './services/gameService';
+import _ from 'lodash';
 
 const App = (): JSX.Element => {
 
 	const [games, setGames] = useState<Game[]>([]);
 
-	const fetchGames = async (search?: string) => {
-		const result = search ? await getSearchedGames(search) : await getDefaultGames();
+	const fetchDefaultGames = async () => {
+		const result = await getDefaultGames();
 		setGames(result);
 	};
 
-	const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-		fetchGames(event.target.value);
+	const fetchSearchedGames = async (search: string) => {
+		const result = search ? await getSearchedGames(search) : [];
+		setGames(result);
 	};
 
+	const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+		debounce(event.target.value.trim());
+	};
+
+	const debounce = useCallback(
+		_.debounce((_searchVal: string) => {
+			fetchSearchedGames(_searchVal);
+		}, 400),
+		[]
+	);
+
 	useEffect(() => {
-		fetchGames();
+		fetchDefaultGames();
 	}, []);
 
 	return (
 		<div className="container">
 			<div>HLTB Lite</div>
 			<button onClick={() => console.log(games)}>Test</button>
-			<input type="text" onChange={(evt) => onSearchChange(evt)} />
+			<input type="text" onChange={(event) => handleSearchChange(event)} />
+			{games.map(game => <div key={game.id}>{game.name}</div>)}
 		</div>
 
 	);
