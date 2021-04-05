@@ -29,7 +29,9 @@ const SearchBar = (): JSX.Element => {
 			{
 				searchResults.length
 					? <div className="search-results">
-						{searchResults.map(game => <div key={game.id}>{game.name}</div>)}
+						{searchResults.map(game =>
+							<div key={game.id} className="search-result">{game.name}</div>
+						)}
 					</div>
 					: <></>
 			}
