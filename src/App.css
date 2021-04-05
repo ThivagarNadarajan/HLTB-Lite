@@ -3,3 +3,7 @@ body {
 	color: white;
 	margin: 10vh 20vw;
 }
+
+.chart-container {
+	color: black;
+}
