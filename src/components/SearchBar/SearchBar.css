@@ -5,15 +5,10 @@
 	box-sizing: border-box;
 }
 
-.search-container {
-	position: relative;
-}
-
 .search-results {
 	z-index: 99;
 	background: white;
 	color: black;
-	position: absolute;
 	width: 100%;
 	box-sizing: border-box;
 	padding: 2px;
