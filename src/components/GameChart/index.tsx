@@ -1,12 +1,12 @@
+import './GameChart.css';
 import React from 'react';
-
-import { BarChart, XAxis, Tooltip, YAxis, Bar } from 'recharts';
 import { Game } from '../../services/gameService';
+import { BarChart, XAxis, Tooltip, YAxis, Bar } from 'recharts';
 
 const GameChart: React.FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element =>
 		<div className="chart-container">
-			<button onClick={() => setGames([])}> Clear Games </button>
+			<button onClick={() => setGames([])}>Clear Games</button>
 			<BarChart
 				width={500}
 				height={500}
