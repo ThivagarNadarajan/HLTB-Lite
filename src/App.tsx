@@ -1,9 +1,9 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { BarChart, XAxis, Tooltip, YAxis, Bar } from 'recharts';
 import { Game, getDefaultGames } from './services/gameService';
 
 import SearchBar from './components/SearchBar';
+import GameChart from './components/GameChart';
 
 const App = (): JSX.Element => {
 
@@ -22,29 +22,7 @@ const App = (): JSX.Element => {
 		<div className="container">
 			<h1>HLTB Lite</h1>
 			<SearchBar games={games} setGames={setGames} />
-			<div className="chart-container">
-				<BarChart
-					width={500}
-					height={500}
-					margin={{ right: 100 }}
-					data={games.map(game => ({
-						tite: game.name,
-						value: game.gameplayMain
-					}))}
-				>
-					<XAxis
-						dataKey="tite"
-						angle={50}
-						textAnchor="start"
-						height={300}
-						width={300}
-						interval={0}
-					/>
-					<YAxis />
-					<Tooltip />
-					<Bar dataKey="value" fill="black" />
-				</BarChart>
-			</div>
+			{games.length ? <GameChart games={games} setGames={setGames} /> : <></>}
 		</div>
 	);
 };
