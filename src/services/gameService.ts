@@ -23,6 +23,6 @@ export const getDefaultGames = async (): Promise<Game[]> => {
 };
 
 export const getSearchedGames = async (game: string): Promise<Game[]> => {
-	const games = await axios.get(`${baseUrl}/${game}`);
+	const games = await axios.get(`${baseUrl}/games/${game}`);
 	return games.data as Game[];
 };
