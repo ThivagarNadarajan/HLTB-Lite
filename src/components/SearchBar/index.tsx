@@ -26,7 +26,9 @@ const SearchBar:
 		);
 
 		const addGame = (game: Game) => {
-			setGames(games.concat(game));
+			if (!games.some(currentGame => currentGame.name === game.name)) {
+				setGames(games.concat(game));
+			}
 		};
 
 		return (
