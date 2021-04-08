@@ -2,7 +2,12 @@
 	font-size: 30px;
 	width: 100%;
 	border: 2px solid black;
+	padding: 5px;
 	box-sizing: border-box;
+}
+
+.search-bar::placeholder {
+	color: lightgray;
 }
 
 .search-results {

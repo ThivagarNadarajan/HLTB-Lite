@@ -35,6 +35,7 @@ const SearchBar:
 					type="text"
 					className="search-bar"
 					onChange={(event) => handleSearchChange(event)}
+					placeholder={'Search for games'}
 				/>
 				{
 					searchResults.length
