@@ -1,6 +1,6 @@
 import './SearchBar.css';
 
-import React, { useState, ChangeEvent, useCallback } from 'react';
+import React, { useState, ChangeEvent, useCallback, useRef, useEffect } from 'react';
 import { Game, getSearchedGames } from '../../services/gameService';
 import _ from 'lodash';
 
@@ -8,6 +8,18 @@ const SearchBar:
 	React.FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element => {
 		const [searchResults, setSearchResults] = useState<Game[]>([]);
+
+		const node = useRef<HTMLDivElement>(null);
+
+		useEffect(() => {
+			document.addEventListener('mousedown', handleClick);
+		}, []);
+
+		const handleClick = (event: MouseEvent) => {
+			if (node.current && !node.current.contains(event.target as Node)) {
+				setSearchResults([]);
+			}
+		};
 
 		const fetchSearchedGames = async (search: string) => {
 			const results = search ? await getSearchedGames(search) : [];
@@ -32,7 +44,7 @@ const SearchBar:
 		};
 
 		return (
-			<div className="search-container">
+			<div className="search-container" ref={node}>
 				<input
 					type="text"
 					className="search-bar"
