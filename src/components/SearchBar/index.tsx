@@ -7,6 +7,7 @@ import _ from 'lodash';
 const SearchBar:
 	React.FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element => {
+		const [searchOpen, setSearchOpen] = useState(false);
 		const [searchResults, setSearchResults] = useState<Game[]>([]);
 
 		const node = useRef<HTMLDivElement>(null);
@@ -17,7 +18,7 @@ const SearchBar:
 
 		const handleClick = (event: MouseEvent) => {
 			if (node.current && !node.current.contains(event.target as Node)) {
-				setSearchResults([]);
+				setSearchOpen(false);
 			}
 		};
 
@@ -48,27 +49,35 @@ const SearchBar:
 				<input
 					type="text"
 					className="search-bar"
+					onClick={() => setSearchOpen(true)}
 					onChange={(event) => handleSearchChange(event)}
 					placeholder={'Search for games'}
 				/>
 				{
-					searchResults.length
+					searchResults.length && searchOpen
 						?
-						<div className="search-results-container">
+						<>
 							<hr />
-							<div className="search-results">
+							<div className="results-container">
 								{searchResults.map(game =>
 									<div
 										key={game.id}
-										className="search-result"
+										className="result-entry"
 										onClick={() => addGame(game)}
 									>
-										<img src={`https://howlongtobeat.com${game.imageUrl}`} />
-										{game.name}
+										<div className='result-info'>
+											<span className="result-title">{game.name}</span>
+											<div className='completion-tags'>
+												<span>{`Main Story: ${game.gameplayMain}`}</span>
+												<span>{`Main + Extras: ${game.gameplayMainExtra}`}</span>
+												<span>{`Main Story: ${game.gameplayCompletionist}`}</span>
+											</div>
+										</div>
+										<span>+</span>
 									</div>
 								)}
 							</div>
-						</div>
+						</>
 						: <></>
 				}
 			</div>
