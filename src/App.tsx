@@ -6,12 +6,13 @@ import SearchBar from './components/SearchBar';
 import GameChart from './components/GameChart';
 
 const App = (): JSX.Element => {
-
 	const [games, setGames] = useState<Game[]>([]);
+	const [loading, setLoading] = useState(true);
 
 	const fetchDefaultGames = async () => {
 		const result = await getDefaultGames();
 		setGames(result);
+		setLoading(false);
 	};
 
 	useEffect(() => {
@@ -23,14 +24,15 @@ const App = (): JSX.Element => {
 			<h1>HLTB Lite</h1>
 			<h3>Lightweight visualization of game completion data from howlongtobeat.com</h3>
 			{
-				games.length
+				loading
 					?
+					<div className="loader"></div>
+					:
 					<div>
 						<SearchBar games={games} setGames={setGames} />
 						{games.length ? <GameChart games={games} setGames={setGames} /> : <></>}
 					</div>
-					:
-					<div className="loader"></div>
+
 			}
 		</div>
 	);
