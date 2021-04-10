@@ -28,26 +28,31 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 						setSelected={setCompletionTypes}
 					/>
 				</div>
-				<BarChart
-					width={500}
-					height={500}
-					margin={{ right: 100 }}
-					data={chartData}
-				>
-					<XAxis
-						dataKey="title"
-						angle={50}
-						textAnchor="start"
-						height={300}
-						width={300}
-						interval={0}
-					/>
-					<YAxis />
-					<Tooltip />
-					<Bar dataKey="Main" fill="black" />
-					<Bar dataKey="Extra" fill="salmon" />
-					<Bar dataKey="Complete" fill="lightblue" />
-				</BarChart>
+				{
+					completionTypes.length
+						? <BarChart
+							width={500}
+							height={500}
+							margin={{ right: 100 }}
+							data={chartData}
+						>
+							<XAxis
+								dataKey="title"
+								angle={50}
+								textAnchor="start"
+								height={300}
+								width={300}
+								interval={0}
+							/>
+							<YAxis />
+							<Tooltip />
+							<Bar dataKey="Main" fill="black" />
+							<Bar dataKey="Extra" fill="salmon" />
+							<Bar dataKey="Complete" fill="lightblue" />
+						</BarChart>
+						: <div>No completion types selected...</div>
+				}
+
 			</div>
 		);
 	};
