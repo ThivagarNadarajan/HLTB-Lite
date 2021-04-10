@@ -1,23 +1,47 @@
+.search-container {
+	position: relative;
+}
+
+.search-container,
+.search-results {
+	background: #1a1a1a;
+	color: white;
+}
+
 .search-bar {
-	font-size: 30px;
 	width: 100%;
-	border: 2px solid black;
-	padding: 5px;
+	padding: 7px 10px;
+	font-size: 25px;
+	border: none;
+	border-radius: 5px;
+	background: #1a1a1a;
+	color: white;
+
 	box-sizing: border-box;
+}
+
+.search-bar:focus {
+	outline: none;
+	margin-bottom: 0;
 }
 
 .search-bar::placeholder {
-	color: lightgray;
+	color: #9c9c9c;
+	font-weight: 300;
+}
+
+hr {
+	color: white;
+	background: white;
+	margin: 0 10px;
 }
 
 .search-results {
+	position: absolute;
 	z-index: 99;
-	background: white;
-	color: black;
 	width: 100%;
 	box-sizing: border-box;
-	padding: 2px;
-	border: 2px solid black;
+	padding: 7px 10px;
 	border-top: 0;
 }
 

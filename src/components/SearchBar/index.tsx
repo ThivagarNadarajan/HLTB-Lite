@@ -53,16 +53,20 @@ const SearchBar:
 				/>
 				{
 					searchResults.length
-						? <div className="search-results">
-							{searchResults.map(game =>
-								<div
-									key={game.id}
-									className="search-result"
-									onClick={() => addGame(game)}
-								>
-									{game.name}
-								</div>
-							)}
+						?
+						<div className="search-results-container">
+							<hr />
+							<div className="search-results">
+								{searchResults.map(game =>
+									<div
+										key={game.id}
+										className="search-result"
+										onClick={() => addGame(game)}
+									>
+										{game.name}
+									</div>
+								)}
+							</div>
 						</div>
 						: <></>
 				}

@@ -1,9 +1,19 @@
 body {
 	background: rgb(73, 71, 71);
-	color: white;
 	margin: 10vh 20vw;
+	font-family: open sans;
+	background: #393a59;
+	color: #8c8dbf;
 }
 
+h1,
+h2 {
+	font-family: Merriweather;
+}
+
+h3 {
+	font-weight: 600;
+}
 
 .loader {
 	border: 16px solid #f3f3f3;
