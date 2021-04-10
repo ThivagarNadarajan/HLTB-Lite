@@ -7,7 +7,6 @@ import Dropdown from '../Dropdown';
 
 const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element => {
-
 		const [completionTypes, setCompletionTypes] = useState<string[]>(['Main', 'Extra', 'Complete']);
 
 		const chartData = games.map(game => ({
