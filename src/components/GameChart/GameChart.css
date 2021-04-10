@@ -1,3 +1,11 @@
 .chart-container {
 	color: black;
 }
+
+.chart-options {
+	display: flex;
+}
+
+.chart-options>button {
+	flex-grow: 0;
+}

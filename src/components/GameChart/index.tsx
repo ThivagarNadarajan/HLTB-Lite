@@ -1,18 +1,14 @@
 import './GameChart.css';
-import React, { ChangeEvent, useState } from 'react';
+import { FC, useState } from 'react';
 import { Game } from '../../services/gameService';
 import { BarChart, XAxis, Tooltip, YAxis, Bar } from 'recharts';
 
-const GameChart: React.FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
+import Dropdown from '../Dropdown';
+
+const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element => {
 
 		const [completionTypes, setCompletionTypes] = useState<string[]>(['Main', 'Extra', 'Complete']);
-		console.log('completionTypes', completionTypes);
-
-		const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-			const type = event.target.value;
-			setCompletionTypes(type === 'All' ? ['Main', 'Extra', 'Complete'] : [type]);
-		};
 
 		const chartData = games.map(game => ({
 			title: game.name,
@@ -24,13 +20,14 @@ const GameChart: React.FC<{ games: Game[]; setGames: React.Dispatch<React.SetSta
 
 		return (
 			<div className="chart-container">
-				<button onClick={() => setGames([])}>Clear Games</button>
-				<select name="completion" onChange={event => handleTypeChange(event)}>
-					<option value='Main'>Main</option>
-					<option value='Extra'>Extra</option>
-					<option value='Complete'>Complete</option>
-					<option value='All'>All</option>
-				</select>
+				<div className="chart-options">
+					<button onClick={() => setGames([])}>Clear Games</button>
+					<Dropdown
+						options={['Main', 'Extra', 'Complete']}
+						selected={completionTypes}
+						setSelected={setCompletionTypes}
+					/>
+				</div>
 				<BarChart
 					width={500}
 					height={500}
