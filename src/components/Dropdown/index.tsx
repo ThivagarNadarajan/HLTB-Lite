@@ -1,5 +1,5 @@
 import './Dropdown.css';
-import { FC, useState } from 'react';
+import { FC, useState, useEffect, useRef } from 'react';
 
 const Dropdown: FC<{
 	options: string[];
@@ -8,30 +8,52 @@ const Dropdown: FC<{
 }>
 	= ({ options, selected, setSelected }) => {
 		const [dropdownOpen, setdropdownOpen] = useState(false);
+		const node = useRef<HTMLDivElement>(null);
+
+		useEffect(() => {
+			document.addEventListener('mousedown', handleClick);
+		}, []);
+
+		const handleClick = (event: MouseEvent) => {
+			if (node.current && !node.current.contains(event.target as Node)) {
+				setdropdownOpen(false);
+			}
+		};
 
 		return (
-			<div className="dropdown-container" onClick={() => setdropdownOpen(!dropdownOpen)}>
+			<div className="dropdown-container"
+				ref={node}
+				onClick={() => setdropdownOpen(true)}
+			>
 				<div className="dropdown-selection">
 					{
-						selected.map((s, idx) =>
-							<div key={idx} className='selected'>
-								<span className='selected-label'>{s}</span>
-								<span className='remove'
-									onClick={
-										() => setSelected(selected.filter(r => s !== r))
-									}
-								>
-									x
+						selected.length
+							? selected.map((s, idx) =>
+								<div key={idx} className='selected'>
+									<span className='selected-label'>{s}</span>
+									<span className='remove'
+										onClick={
+											(event) => {
+												event.stopPropagation();
+												setSelected(selected.filter(r => s !== r));
+											}
+										}
+									>
+										x
 								</span>
-							</div>
-						)
+								</div>
+							)
+							: <span className='placeholder'>Select...</span>
 					}
 				</div>
 				{
 					dropdownOpen
 						?
 						<div className="dropdown-options" >
-							<li onClick={() => setSelected(options)}>All</li>
+							{selected.length !== options.length
+								? <li onClick={() => setSelected(options)}>All</li>
+								: <li>...</li>
+							}
 							{
 								options
 									.filter(option => !selected.includes(option))
