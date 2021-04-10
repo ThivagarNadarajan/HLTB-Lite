@@ -43,6 +43,32 @@ hr {
 	box-sizing: border-box;
 	padding: 7px 10px;
 	border-top: 0;
+	max-height: 400px;
+	overflow-y: auto;
+}
+
+
+.search-results::-webkit-scrollbar {
+	width: 8px;
+	background: none;
+}
+
+.search-results:hover::-webkit-scrollbar-thumb {
+	background: white;
+}
+
+.search-result {
+	display: flex;
+	margin: 10px 0;
+}
+
+.search-results:last-child {
+	margin: 0 0 10px 0 !important;
+}
+
+.search-result>img {
+	max-height: 100px;
+	max-width: 70px;
 }
 
 .search-result:hover {

@@ -63,6 +63,7 @@ const SearchBar:
 										className="search-result"
 										onClick={() => addGame(game)}
 									>
+										<img src={`https://howlongtobeat.com${game.imageUrl}`} />
 										{game.name}
 									</div>
 								)}
