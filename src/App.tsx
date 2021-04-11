@@ -22,8 +22,7 @@ const App = (): JSX.Element => {
 	return (
 		<div className="container">
 			<h1>HLTB Lite</h1>
-			<h3>Visualization of game completion data from
-				{' '}
+			<h3>Visualize game completion data from {' '}
 				<a href="https://howlongtobeat.com" target='_blank' rel="noreferrer">HowLongToBeat</a>
 			</h3>
 			{
