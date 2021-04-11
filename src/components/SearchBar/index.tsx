@@ -4,6 +4,9 @@ import React, { useState, ChangeEvent, useCallback, useRef, useEffect } from 're
 import { Game, getSearchedGames } from '../../services/gameService';
 import _ from 'lodash';
 
+import { Icon } from '@iconify/react';
+import baselineAddChart from '@iconify-icons/ic/baseline-add-chart';
+
 const SearchBar:
 	React.FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element => {
@@ -63,7 +66,12 @@ const SearchBar:
 									<div
 										key={game.id}
 										className="result-entry"
-										onClick={() => addGame(game)}
+										onClick={() => {
+											addGame(game);
+											setSearchResults(
+												searchResults.filter(result => result !== game)
+											);
+										}}
 									>
 										<div className='result-info'>
 											<span className="result-title">{game.name}</span>
@@ -73,7 +81,7 @@ const SearchBar:
 												<span>{`Main Story: ${game.gameplayCompletionist}`}</span>
 											</div>
 										</div>
-										<span>+</span>
+										<Icon icon={baselineAddChart} className="chart-icon" />
 									</div>
 								)}
 							</div>

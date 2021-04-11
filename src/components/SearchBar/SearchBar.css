@@ -62,15 +62,11 @@ hr {
 	padding: 10px;
 	border-radius: 4px;
 	justify-content: space-between;
-	background: lightgray;
-}
-
-.result-entry:last-child {
-	/* margin: 0 0 10px 0 !important; */
+	background: #595977;
 }
 
 .result-entry:hover {
-	background: lightblue;
+	background: #28286b;
 	cursor: pointer;
 }
 
@@ -92,4 +88,9 @@ hr {
 
 .completion-tags>span:first-child {
 	margin: 0;
+}
+
+.chart-icon {
+	font-size: 25px;
+	margin: auto 0;
 }
