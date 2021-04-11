@@ -1,18 +1,28 @@
 body {
-	background: rgb(73, 71, 71);
 	margin: 10vh 20vw;
 	font-family: open sans;
-	background: #393a59;
-	color: #8c8dbf;
+	background: #f6fbff;
 }
 
-h1,
-h2 {
-	font-family: Merriweather;
+h1 {
+	color: #1f7cce;
+	font-family: open sans;
+	margin: 0;
 }
 
 h3 {
+	color: #88c2f5;
 	font-weight: 600;
+	margin: 0 0 30px 0;
+}
+
+a {
+	color: #f3c59f;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #f07e27;
 }
 
 .loader {

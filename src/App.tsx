@@ -22,7 +22,10 @@ const App = (): JSX.Element => {
 	return (
 		<div className="container">
 			<h1>HLTB Lite</h1>
-			<h3>Lightweight visualization of game completion data from howlongtobeat.com</h3>
+			<h3>Visualization of game completion data from
+				{' '}
+				<a href="https://howlongtobeat.com" target='_blank' rel="noreferrer">HowLongToBeat</a>
+			</h3>
 			{
 				loading
 					?

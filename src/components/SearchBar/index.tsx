@@ -51,7 +51,8 @@ const SearchBar:
 			<div className="search-container" ref={node}>
 				<input
 					type="text"
-					className="search-bar"
+					// add class to change border-radius based on search results being shown
+					className={`search-bar ${searchResults.length && searchOpen ? 'search-bar-open' : 'search-bar-closed'}`}
 					onClick={() => setSearchOpen(true)}
 					onChange={(event) => handleSearchChange(event)}
 					placeholder={'Search for games'}
