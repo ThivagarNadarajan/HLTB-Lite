@@ -60,33 +60,30 @@ const SearchBar:
 				{
 					searchResults.length && searchOpen
 						?
-						<>
-							<hr />
-							<div className="results-container">
-								{searchResults.map(game =>
-									<div
-										key={game.id}
-										className="result-entry"
-										onClick={() => {
-											addGame(game);
-											setSearchResults(
-												searchResults.filter(result => result !== game)
-											);
-										}}
-									>
-										<div className='result-info'>
-											<span className="result-title">{game.name}</span>
-											<div className='completion-tags'>
-												<span>{`Main Story: ${game.gameplayMain}`}</span>
-												<span>{`Main + Extras: ${game.gameplayMainExtra}`}</span>
-												<span>{`Main Story: ${game.gameplayCompletionist}`}</span>
-											</div>
+						<div className="results-container">
+							{searchResults.map(game =>
+								<div
+									key={game.id}
+									className="result-entry"
+									onClick={() => {
+										addGame(game);
+										setSearchResults(
+											searchResults.filter(result => result !== game)
+										);
+									}}
+								>
+									<div className='result-info'>
+										<span className="result-title">{game.name}</span>
+										<div className='completion-tags'>
+											<span className="completion-tag main-tag">{`Main: ${game.gameplayMain} hrs`}</span>
+											<span className="completion-tag extra-tag">{`Extra: ${game.gameplayMainExtra} hrs`}</span>
+											<span className="completion-tag complete-tag">{`Cmpl: ${game.gameplayCompletionist} hrs`}</span>
 										</div>
-										<Icon icon={baselineAddChart} className="chart-icon" />
 									</div>
-								)}
-							</div>
-						</>
+									<Icon icon={baselineAddChart} className="chart-icon" />
+								</div>
+							)}
+						</div>
 						: <></>
 				}
 			</div>
