@@ -45,9 +45,9 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 							/>
 							<YAxis />
 							<Tooltip />
-							<Bar dataKey="Main" fill="black" />
-							<Bar dataKey="Extra" fill="salmon" />
-							<Bar dataKey="Complete" fill="lightblue" />
+							<Bar dataKey="Main" fill="#abcfec" />
+							<Bar dataKey="Extra" fill="#6697c2" />
+							<Bar dataKey="Complete" fill="#106ec0" />
 						</BarChart>
 						: <div>No completion types selected...</div>
 				}
