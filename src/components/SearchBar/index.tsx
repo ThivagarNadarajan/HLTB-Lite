@@ -1,14 +1,13 @@
 import './SearchBar.css';
 
-import React, { useState, ChangeEvent, useCallback, useRef, useEffect } from 'react';
+import { useState, ChangeEvent, useCallback, useRef, useEffect, FC } from 'react';
 import { Game, getSearchedGames } from '../../services/gameService';
 import _ from 'lodash';
 
 import { Icon } from '@iconify/react';
 import baselineAddChart from '@iconify-icons/ic/baseline-add-chart';
 
-const SearchBar:
-	React.FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
+const SearchBar: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element => {
 		const [searchOpen, setSearchOpen] = useState(false);
 		const [searchResults, setSearchResults] = useState<Game[]>([]);
@@ -52,7 +51,7 @@ const SearchBar:
 				<input
 					type="text"
 					// add class to change border-radius based on search results being shown
-					className={`search-bar ${searchResults.length && searchOpen ? 'search-bar-open' : 'search-bar-closed'}`}
+					className={`search-bar ${searchResults.length && searchOpen ? 'search-bar-open' : ''}`}
 					onClick={() => setSearchOpen(true)}
 					onChange={(event) => handleSearchChange(event)}
 					placeholder={'Search for games'}
