@@ -20,7 +20,7 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 		return (
 			<div className="chart-container">
 				<div className="chart-options">
-					<button onClick={() => setGames([])}>Clear Games</button>
+					<button className="clear-chart" onClick={() => setGames([])}>Clear Chart</button>
 					<Dropdown
 						options={['Main', 'Extra', 'Complete']}
 						selected={completionTypes}
@@ -34,6 +34,7 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 							height={500}
 							margin={{ right: 100 }}
 							data={chartData}
+							className="chart"
 						>
 							<XAxis
 								dataKey="title"

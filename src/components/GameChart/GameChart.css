@@ -1,11 +1,25 @@
 .chart-container {
-	color: black;
+	color: #424242;
 }
 
 .chart-options {
 	display: flex;
+	margin-bottom: 20px;
 }
 
-.chart-options>button {
-	flex-grow: 0;
+.clear-chart {
+	border-radius: 3px;
+	background: #f19393;
+	color: white;
+	border: none;
+	outline: none;
+	margin-right: 10px;
+	padding: 10px;
+	transition: background 200ms;
+}
+
+.clear-chart:hover,
+.clear-chart:active {
+	background: #fa5757;
+	cursor: pointer;
 }
