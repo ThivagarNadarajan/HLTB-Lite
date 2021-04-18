@@ -64,9 +64,6 @@ const SearchBar: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 									className="result-entry"
 									onClick={() => {
 										addGame(game);
-										setSearchResults(
-											searchResults.filter(result => result !== game)
-										);
 									}}
 								>
 									<div className='result-info'>
