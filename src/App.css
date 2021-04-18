@@ -36,6 +36,10 @@ a:hover {
 	color: var(--accent);
 }
 
+.loading-container {
+	margin-top: 50px;
+}
+
 .loader {
 	border: 16px solid var(--loader-bg);
 	border-radius: 50%;
@@ -45,7 +49,13 @@ a:hover {
 	-webkit-animation: spin 2s linear infinite;
 	/* Safari */
 	animation: spin 2s linear infinite;
-	margin: 100px auto;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.loading-text {
+	display: flex;
+	justify-content: center;
 }
 
 /* Safari */

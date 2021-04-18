@@ -28,7 +28,10 @@ const App = (): JSX.Element => {
 			{
 				loading
 					?
-					<div className="loader"></div>
+					<div className="loading-container">
+						<div className="loader"></div>
+						<div className="loading-text">Waiting for Heroku Server...</div>
+					</div>
 					:
 					<div>
 						<SearchBar games={games} setGames={setGames} />
