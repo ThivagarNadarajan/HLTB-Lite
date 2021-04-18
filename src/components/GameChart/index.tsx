@@ -51,8 +51,9 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 										height={300}
 										width={300}
 										interval={0}
+										stroke={'#b4bdc3'}
 									/>
-									<YAxis />
+									<YAxis stroke={'#b4bdc3'} />
 									<Tooltip />
 									<Bar dataKey="Main" fill="#abcfec" />
 									<Bar dataKey="Extra" fill="#6697c2" />

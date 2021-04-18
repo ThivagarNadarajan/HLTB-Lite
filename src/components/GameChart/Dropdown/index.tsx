@@ -1,5 +1,8 @@
 import './Dropdown.css';
 import { FC, useState, useEffect, useRef } from 'react';
+import { Icon } from '@iconify/react';
+import arrowdownAlt2 from '@iconify-icons/dashicons/arrow-down-alt2';
+import closeIcon from '@iconify-icons/ion/close';
 
 const Dropdown: FC<{
 	options: string[];
@@ -23,14 +26,13 @@ const Dropdown: FC<{
 		return (
 			<div className="dropdown-container"
 				ref={node}
-				onClick={() => setdropdownOpen(true)}
 			>
 				<div className="dropdown-selection">
 					{
 						selected.length
 							? selected.map((s, idx) =>
 								<div key={idx} className='selected'>
-									<span className='selected-label'>{s}</span>
+									<span className='selected-chip'>{s}</span>
 									<span className='remove'
 										onClick={
 											(event) => {
@@ -39,20 +41,29 @@ const Dropdown: FC<{
 											}
 										}
 									>
-										x
-								</span>
+										<Icon icon={closeIcon} />
+									</span>
 								</div>
 							)
 							: <span className='placeholder'>Select...</span>
 					}
+					{
+						selected.length !== options.length
+							?
+							<div onClick={() => setdropdownOpen(!dropdownOpen)} className="dropdown-toggle">
+								<Icon icon={arrowdownAlt2} />
+							</div>
+							: <></>
+					}
+
 				</div>
 				{
 					dropdownOpen
 						?
-						<div className="dropdown-options" >
+						<div className="options" >
 							{selected.length !== options.length
-								? <li onClick={() => setSelected(options)}>All</li>
-								: <li>...</li>
+								? <li onClick={() => setSelected(options)} className="option">All</li>
+								: <></>
 							}
 							{
 								options
@@ -62,6 +73,7 @@ const Dropdown: FC<{
 											onClick={
 												() => setSelected(selected.concat(option))
 											}
+											className="option"
 										>
 											{option}
 										</li>
