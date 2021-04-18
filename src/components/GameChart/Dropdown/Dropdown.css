@@ -9,7 +9,7 @@
 	--tag-text: #b4bdc3;
 	--option-text: #424242;
 	--option-bg-hover: #d8ebfb;
-	--option-text-hover: #2d88d8;
+	--highlight: #2d88d8;
 }
 
 .dropdown-selection,
@@ -23,6 +23,10 @@
 	padding: 5px;
 	display: flex;
 	font-size: 15px;
+}
+
+.selection-highlight {
+	border-color: var(--highlight);
 }
 
 .dropdown-toggle {
@@ -82,7 +86,7 @@
 
 .option:hover {
 	background: var(--option-bg-hover);
-	color: var(--option-text-hover);
+	color: var(--highlight);
 	cursor: pointer;
 	border-radius: 2px;
 }

@@ -27,7 +27,7 @@ const Dropdown: FC<{
 			<div className="dropdown-container"
 				ref={node}
 			>
-				<div className="dropdown-selection">
+				<div className={`dropdown-selection ${dropdownOpen ? 'selection-highlight' : ''}`}>
 					{
 						selected.length
 							? selected.map((s, idx) =>
