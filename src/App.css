@@ -10,6 +10,12 @@ body {
 	--loader-fg: var(--fg);
 }
 
+@media only screen and (max-width: 800px) {
+	body {
+		margin: 10vh 5vw;
+	}
+}
+
 h1 {
 	color: var(--fg);
 	margin: 0;
