@@ -15,7 +15,7 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 
 		useEffect(() => {
 			window.addEventListener('resize', () => {
-				if (window.innerWidth <= 650) {
+				if (window.innerWidth <= 600) {
 					setIsMobile(true);
 				} else {
 					setIsMobile(false);
@@ -47,7 +47,7 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 					completionTypes.length
 						?
 						<div>
-							<ResponsiveContainer width="100%" aspect={isMobile ? 1.0 / 1.3 : 1.0 / 1.1}>
+							<ResponsiveContainer width="100%" aspect={isMobile ? 1.0 / 1.7 : 1.0 / 1.0}>
 								<BarChart
 									width={500}
 									height={500}
