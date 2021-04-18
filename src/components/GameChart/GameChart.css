@@ -3,8 +3,8 @@
 	background: var(--bg);
 	padding: 10px;
 	height: max-content;
-	border-radius: 3px;
-	box-shadow: 0 0 12px 2px var(--shadow);
+	border-radius: 5px;
+	box-shadow: 0 0 10px 1px var(--shadow);
 
 	--bg: white;
 	--text: #424242;
