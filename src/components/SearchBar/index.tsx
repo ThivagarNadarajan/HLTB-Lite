@@ -48,7 +48,6 @@ const SearchBar: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 			<div className="search-container" ref={node}>
 				<input
 					type="text"
-					// add class to change border-radius based on search results being shown
 					className={`search-bar ${searchResults.length && searchOpen ? 'search-bar-open' : ''}`}
 					onClick={() => setSearchOpen(true)}
 					onChange={(event) => handleSearchChange(event)}
@@ -63,7 +62,13 @@ const SearchBar: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 									key={game.id}
 									className="result-entry"
 									onClick={() => {
-										addGame(game);
+										if (games.length < 15) {
+											addGame(game);
+										} else {
+											window.alert(
+												'There can only be a maximum of 15 games in the chart, clear the chart to add more games.'
+											);
+										}
 									}}
 								>
 									<div className='result-info'>
