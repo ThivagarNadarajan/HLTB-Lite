@@ -6,8 +6,8 @@
 	--search-text: #424242;
 	--entry-hover-bg: #d8ebfb;
 	--entry-hover-text: #2d88d8;
-	--accent: #f2f4f6;
-	--accent-dark: #b4bdc3;
+	--tag-bg: #f2f4f6;
+	--tag-text: #b4bdc3;
 
 }
 
@@ -61,7 +61,7 @@
 }
 
 .results-container:hover::-webkit-scrollbar-thumb {
-	background: var(--accent);
+	background: var(--tag-bg);
 	border-radius: var(--border-radius);
 }
 
@@ -101,8 +101,8 @@
 	margin: 4px;
 	padding: 7px;
 	border-radius: 3px;
-	background: var(--accent);
-	color: var(--accent-dark);
+	background: var(--tag-bg);
+	color: var(--tag-text);
 	font-weight: 600;
 	font-size: 13px;
 }

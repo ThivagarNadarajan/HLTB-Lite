@@ -1,9 +1,7 @@
 import './SearchBar.css';
-
 import { useState, ChangeEvent, useCallback, useRef, useEffect, FC } from 'react';
 import { Game, getSearchedGames } from '../../services/gameService';
 import _ from 'lodash';
-
 import { Icon } from '@iconify/react';
 import baselineAddChart from '@iconify-icons/ic/baseline-add-chart';
 
