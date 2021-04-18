@@ -10,6 +10,7 @@
 	--option-text: #424242;
 	--option-bg-hover: #d8ebfb;
 	--highlight: #2d88d8;
+	--placeholder: var(--border);
 }
 
 .dropdown-selection,
@@ -43,6 +44,10 @@
 .placeholder,
 .selected {
 	margin: 3px;
+}
+
+.placeholder {
+	color: var(--placeholder);
 }
 
 .selected {
@@ -79,6 +84,7 @@
 	box-sizing: border-box;
 }
 
+.empty-option,
 .option {
 	color: var(--option-text);
 	padding: 2px 10px;

@@ -63,7 +63,7 @@ const Dropdown: FC<{
 						<div className="options" >
 							{selected.length !== options.length
 								? <li onClick={() => setSelected(options)} className="option">All</li>
-								: <>...</>
+								: <li className="empty-option">...</li>
 							}
 							{
 								options
