@@ -4,12 +4,12 @@
 	background: none;
 
 	--border-radius: 6px;
-
+	--border-highlight: #2d88d8;
 	--shadow: #e2e2e2;
 	--placeholder: #ccd4da;
 	--search-text: #424242;
 	--entry-bg-hover: #d8ebfb;
-	--entry-text-hover: #2d88d8;
+	--entry-text-hover: var(--border-highlight);
 	--tag-bg: #f2f4f6;
 	--tag-text: #b4bdc3;
 }
@@ -26,7 +26,7 @@
 	font-size: 25px;
 	border: 1px solid var(--placeholder);
 	box-sizing: border-box;
-	transition: box-shadow 500ms;
+	transition: border-color 500ms;
 }
 
 .search-bar::placeholder {
@@ -38,22 +38,16 @@
 .search-bar:focus {
 	outline: none;
 	margin-bottom: 0;
-	box-shadow: 0 0 12px 2px var(--shadow);
-	border: none
+	border-color: var(--border-highlight);
 }
 
 .results-container {
-	box-shadow: 0 5px 13px 2px var(--shadow);
-	margin-top: 15px;
-}
-
-.results-container {
-	position: absolute;
 	z-index: 99;
 	width: 100%;
 	box-sizing: border-box;
 	padding: 0 3px 0 10px;
-	border-top: 0;
+	margin-top: 15px;
+	border: 1px solid var(--placeholder);
 	max-height: 400px;
 	overflow-y: auto;
 }
