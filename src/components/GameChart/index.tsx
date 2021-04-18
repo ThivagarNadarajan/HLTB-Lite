@@ -1,5 +1,5 @@
 import './GameChart.css';
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Game } from '../../services/gameService';
 import { BarChart, XAxis, Tooltip, YAxis, Bar } from 'recharts';
 import { ResponsiveContainer } from 'recharts';
@@ -11,6 +11,17 @@ import Dropdown from './Dropdown';
 const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element => {
 		const [completionTypes, setCompletionTypes] = useState<string[]>(['Main', 'Extra', 'Complete']);
+		const [isMobile, setIsMobile] = useState(false);
+
+		useEffect(() => {
+			window.addEventListener('resize', () => {
+				if (window.innerWidth <= 650) {
+					setIsMobile(true);
+				} else {
+					setIsMobile(false);
+				}
+			});
+		});
 
 		const chartData = games.map(game => ({
 			title: game.name,
@@ -36,7 +47,7 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 					completionTypes.length
 						?
 						<div>
-							<ResponsiveContainer width="100%" aspect={1.0 / 1.0}>
+							<ResponsiveContainer width="100%" aspect={isMobile ? 1.0 / 1.3 : 1.0 / 1.1}>
 								<BarChart
 									width={500}
 									height={500}
