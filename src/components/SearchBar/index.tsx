@@ -34,7 +34,7 @@ const SearchBar: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 		const debounce = useCallback(
 			_.debounce((_searchVal: string) => {
 				fetchSearchedGames(_searchVal);
-			}, 100),
+			}, 300),
 			[]
 		);
 
