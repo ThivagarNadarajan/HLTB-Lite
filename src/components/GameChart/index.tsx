@@ -64,9 +64,9 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 									/>
 									<YAxis stroke={'#b4bdc3'} />
 									<Tooltip />
-									<Bar dataKey="Main" fill="#abcfec" />
-									<Bar dataKey="Extra" fill="#6697c2" />
-									<Bar dataKey="Complete" fill="#106ec0" />
+									<Bar dataKey="Main" fill="#e15127" />
+									<Bar dataKey="Extra" fill="#c4b693" />
+									<Bar dataKey="Complete" fill="#1e5982" />
 								</BarChart>
 							</ResponsiveContainer>
 						</div>
