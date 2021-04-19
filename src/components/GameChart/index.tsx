@@ -47,10 +47,8 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 					completionTypes.length
 						?
 						<div>
-							<ResponsiveContainer width="100%" aspect={isMobile ? 1.0 / 1.7 : 1.0 / 0.8}>
+							<ResponsiveContainer width="100%" height={isMobile ? 500 : 600}>
 								<BarChart
-									width={500}
-									height={500}
 									margin={{ right: 50 }}
 									data={chartData}
 									className="chart"
