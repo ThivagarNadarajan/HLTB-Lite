@@ -8,9 +8,15 @@ import closeIcon from '@iconify-icons/ion/close';
 
 import Dropdown from './Dropdown';
 
+enum CompletionTypes {
+	Main = 'Main Story',
+	Extra = 'Main + Extra',
+	Complete = 'Completionist'
+}
+
 const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
 	= ({ games, setGames }): JSX.Element => {
-		const [completionTypes, setCompletionTypes] = useState<string[]>(['Main', 'Extra', 'Complete']);
+		const [completionTypes, setCompletionTypes] = useState<string[]>(Object.values(CompletionTypes));
 		const [isMobile, setIsMobile] = useState(false);
 
 		useEffect(() => {
@@ -25,9 +31,9 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 
 		const chartData = games.map(game => ({
 			title: game.name,
-			...(completionTypes.includes('Main') ? { ['Main']: game.gameplayMain } : {}),
-			...(completionTypes.includes('Extra') ? { ['Extra']: game.gameplayMainExtra } : {}),
-			...(completionTypes.includes('Complete') ? { ['Complete']: game.gameplayCompletionist } : {}),
+			...(completionTypes.includes(CompletionTypes.Main) ? { [CompletionTypes.Main]: game.gameplayMain } : {}),
+			...(completionTypes.includes(CompletionTypes.Extra) ? { [CompletionTypes.Extra]: game.gameplayMainExtra } : {}),
+			...(completionTypes.includes(CompletionTypes.Complete) ? { [CompletionTypes.Complete]: game.gameplayCompletionist } : {}),
 
 		}));
 
@@ -35,7 +41,7 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 			<div className="chart-container">
 				<div className="chart-options">
 					<Dropdown
-						options={['Main', 'Extra', 'Complete']}
+						options={Object.values(CompletionTypes)}
 						selected={completionTypes}
 						setSelected={setCompletionTypes}
 					/>
@@ -64,9 +70,9 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 									/>
 									<YAxis stroke={'#b4bdc3'} />
 									<Tooltip />
-									<Bar dataKey="Main" fill="#e15127" />
-									<Bar dataKey="Extra" fill="#c4b693" />
-									<Bar dataKey="Complete" fill="#1e5982" />
+									<Bar dataKey={CompletionTypes.Main} fill="#e15127" />
+									<Bar dataKey={CompletionTypes.Extra} fill="#c4b693" />
+									<Bar dataKey={CompletionTypes.Complete} fill="#1e5982" />
 								</BarChart>
 							</ResponsiveContainer>
 						</div>
