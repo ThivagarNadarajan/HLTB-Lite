@@ -1,5 +1,6 @@
 body {
-	margin: 10vh 20vw;
+	margin: 5vh 20vw;
+	margin-bottom: 3vh;
 	font-family: open sans;
 	background: #f6fbff;
 	--fg: #1f7cce;
@@ -12,7 +13,7 @@ body {
 
 @media only screen and (max-width: 800px) {
 	body {
-		margin: 10vh 5vw;
+		margin: 5vh 5vw;
 	}
 }
 
@@ -77,4 +78,13 @@ a:hover {
 	100% {
 		transform: rotate(360deg);
 	}
+}
+
+footer {
+	margin-top: 30px;
+	color: var(--fg-light);
+	font-size: 15px;
+	font-weight: 600;
+	display: flex;
+	justify-content: center;
 }

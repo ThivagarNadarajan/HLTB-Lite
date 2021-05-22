@@ -39,6 +39,15 @@ const App = (): JSX.Element => {
 					</div>
 
 			}
+			<footer>
+				<div>
+					Made by {' '}
+					<a href="https://thivagar.com"
+						target='_blank' rel='noopener noreferrer'>
+						Thivagar Nadarajan
+				</a>
+				</div>
+			</footer>
 		</div>
 	);
 };
