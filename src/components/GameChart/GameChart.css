@@ -18,7 +18,11 @@
 	margin-bottom: 20px;
 }
 
-.clear-chart {
+.chart-controls {
+	display: flex;
+}
+
+.chart-control {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -30,10 +34,27 @@
 	padding: 5px;
 	font-size: 30px;
 	transition: color 200ms;
+	cursor: pointer;
+}
+
+.edit-chart:hover,
+.edit-chart:active {
+	color: var(--fg);
+}
+
+.edit-enabled {
+	border: 1px solid var(--fg);
+	color: var(--fg);
 }
 
 .clear-chart:hover,
 .clear-chart:active {
 	color: var(--red);
-	cursor: pointer;
+}
+
+.removal-tooltip {
+	background: white;
+	padding: 10px;
+	border: 1px solid var(--red);
+	color: var(--red);
 }
