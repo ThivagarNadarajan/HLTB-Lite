@@ -3,7 +3,7 @@
 import './GameChart.css';
 import { FC, useState, useEffect } from 'react';
 import { Game } from '../../services/gameService';
-import { BarChart, XAxis, Tooltip, YAxis, Bar, Rectangle } from 'recharts';
+import { BarChart, XAxis, Tooltip, YAxis, Bar, Rectangle, Cell } from 'recharts';
 import { ResponsiveContainer } from 'recharts';
 import { Icon } from '@iconify/react';
 import closeIcon from '@iconify-icons/ion/close';
@@ -22,6 +22,12 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 		const [completionTypes, setCompletionTypes] = useState<string[]>(Object.values(CompletionTypes));
 		const [isMobile, setIsMobile] = useState(false);
 		const [editMode, setEditMode] = useState(false);
+
+		const barColors = {
+			[CompletionTypes.Main]: '#e15127',
+			[CompletionTypes.Extra]: '#c4b693',
+			[CompletionTypes.Complete]: '#1e5982'
+		};
 
 		useEffect(() => {
 			window.addEventListener('resize', () => {
@@ -83,10 +89,21 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 										cursor={<CustomCursor games={games} setGames={setGames} editMode={editMode} />}
 										content={editMode && CustomTooltip}
 									/>
-									<Bar dataKey={CompletionTypes.Main} fill="#e15127" />
-									<Bar dataKey={CompletionTypes.Extra} fill="#c4b693" />
-									<Bar dataKey={CompletionTypes.Complete} fill="#1e5982" />
-
+									{
+										Object.values(CompletionTypes).map((type, idx) => (
+											<Bar dataKey={type} fill={barColors[type]} key={idx}>
+												{
+													editMode && chartData.map((entry, index) => (
+														<Cell
+															key={index}
+															onClick={() => setGames(games.filter(game => game.name != entry.title))}
+															style={{ cursor: 'pointer' }}
+														/>
+													))
+												}
+											</Bar>
+										))
+									}
 								</BarChart>
 							</ResponsiveContainer>
 						</div>
@@ -96,7 +113,6 @@ const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateActi
 			</div>
 		);
 	};
-
 
 const CustomCursor = (props) => {
 	const { x, y, width, height, payload, games, setGames, editMode } = props;
