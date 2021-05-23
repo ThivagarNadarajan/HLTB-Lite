@@ -12,9 +12,9 @@ import pencilOutline from '@iconify-icons/ion/pencil-outline';
 import Dropdown from './Dropdown';
 
 enum CompletionTypes {
-	Main = 'Main Story',
-	Extra = 'Main + Extra',
-	Complete = 'Completionist'
+	Main = 'Main',
+	Extra = 'Extra',
+	Complete = 'Complete'
 }
 
 const GameChart: FC<{ games: Game[]; setGames: React.Dispatch<React.SetStateAction<Game[]>> }>
